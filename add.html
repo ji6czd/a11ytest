@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add element</title>
+    <script type="text/javascript">
+        "use strict";
+        const MOREDOC = `
+おばあさんが革で選択をしていると、大きな桃が「どんぶらこっこ～、どんぶらこっこ～」と流れてくるではありませんか。
+`;
+
+        function like() {
+            let like = document.createElement("p");
+            like.innerHTML = 'ツイッターへのリンクだよお';
+            like.autofocus = "true;"
+            like.id = "twitter";
+            if (document.getElementById("twitter") == null) {
+                document.body.appendChild(like);
+            }
+        }
+        function more() {
+            let moreP = document.createElement("p");
+            moreP.innerHTML = MOREDOC;
+            moreP.id = "more";
+            let endP = document.getElementById("end");
+            if (document.getElementById("more") == null) {
+                document.body.insertBefore(moreP, endP);
+                document.getElementById("dispmore").remove();
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>知らないうちに中身が増えてる系</h1>
+    <p><button onclick="like()">Like!</button></p>
+    <p>むかしむかし、おじいさんとおばあさんがおりました。おじいさんは山江芝刈りに、おばあさんは川へ洗濯に行きました。</p>
+    <p onclick="more()" id="dispmore">続きはこちら</p>
+    <p id="end">おしまい！</p>
+</body>
+
+</html>

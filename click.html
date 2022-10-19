@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click test</title>
+    <script type="text/javascript">
+        function play(sString) {
+             const uttr = new window.SpeechSynthesisUtterance();
+            uttr.text = sString;
+            window.speechSynthesis.speak(uttr);
+        } 
+        </script>
+        </head>
+<body>
+<h1>Click test</h1>    
+<h2>ボタンに見えない</h2>
+<p>
+    <span onclick="play('こんにちは')">こんにちは</span>
+    <span onclick="play('世界')">世界</span>
+</p>
+
+<h2>個別のボタンに見える</h2>
+<p>
+    <span role="button" onclick="play('こんにちは')">こんにちは</span>
+    <span role="button" onclick="play('世界')">世界</span>
+</p>
+</body>
+</html>
