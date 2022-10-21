@@ -1,8 +1,6 @@
-let keyCounter = 0;
+let keyCounter = -1;
 let brailleChar = 0;
-let buffer = new String();
-let insertPoint = 0;
-
+let beep;
 function processKeyboard(code) {
   keyCounter = -1;
 }
@@ -10,29 +8,39 @@ function processKeyboard(code) {
 function brailleIn() {
   if (keyCounter > 0) keyCounter--;
   if (keyCounter == 0) {
+    let el = document.getElementById("inputarea");
     brailleChar += 0x2800;
-    let el = document.activeElement;
-    el.getSelection
-    buffer = el.innerHTML;
-    buffer += String.fromCharCode(brailleChar);
-    el.innerHTML = buffer;
-    insertPoint++;
-    el.setSelectionRange(insertPoint, insertPoint);
+    let pos = el.selectionStart;
+    let sentence = el.value;
+    let len = sentence.length;
+    let before = sentence.substr(0, pos);
+    let after = sentence.substr(pos, len);
+    // sentence = 'hoge';
+    sentence = before + String.fromCharCode(brailleChar) + after;
+    el.value = sentence;
+    console.log(el.innerHTML);
+    beep.play();
+    el.setSelectionRange(pos + 1, pos + 1);
     brailleChar = 0;
   }
 }
 
 function isBrailleKey(code) {
   switch (code) {
-    case "KeyF":
-    case "KeyD":
-    case "KeyS":
-    case "KeyJ":
-    case "KeyK":
-    case "KeyL":
-      return true;
-    default:
+    case "Backspace":
+    case "Tab":
+    case "Enter":
+    case "Home":
+    case "ArrowUp":
+    case "ArrowLeft":
+    case "ArrowRight":
+    case "End":
+    case "ArrowDown":
+    case "Delete":
       return false;
+      break;
+    default:
+      return true;
   }
 }
 
@@ -71,10 +79,17 @@ function keyIn(e) {
         break;
     }
   }
+  else {
+    keyCounter = -1;
+    let el = document.getElementById("inputarea");
+  }
 }
 
 function bootstrap() {
   let input = document.getElementById("inputarea");
   input.addEventListener('keydown', keyIn);
   input.addEventListener('keyup', brailleIn);
+  beep = new Audio();
+  beep.src = "./beep.wav";
+  beep.play();
 }    
