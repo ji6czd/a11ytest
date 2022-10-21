@@ -5,9 +5,11 @@ function processKeyboard(code) {
   keyCounter = -1;
 }
 
-function brailleIn() {
-  if (keyCounter > 0) keyCounter--;
-  if (keyCounter == 0) {
+function brailleIn(e) {
+  if (e.isComposing) {
+    return;
+  }
+  if (keyCounter == 1) {
     let el = document.getElementById("inputarea");
     brailleChar += 0x2800;
     let pos = el.selectionStart;
@@ -23,10 +25,14 @@ function brailleIn() {
     el.setSelectionRange(pos + 1, pos + 1);
     brailleChar = 0;
   }
+  if (keyCounter > 0) keyCounter--;
 }
 
-function isBrailleKey(code) {
-  switch (code) {
+function isBrailleKey(e) {
+  if (e.ctrlKey || e.isComposing || e.altKey) {
+    return false;
+  }
+  switch (e.code) {
     case "Backspace":
     case "Tab":
     case "Enter":
@@ -45,7 +51,7 @@ function isBrailleKey(code) {
 }
 
 function keyIn(e) {
-  if (isBrailleKey(e.code) == true) {
+  if (isBrailleKey(e) == true) {
     e.preventDefault();
     if (e.repeat) {
       return;

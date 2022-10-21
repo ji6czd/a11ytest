@@ -7,14 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Braille Input</title>
   <script type="text/javascript" src="brailleinput.js"></script>
+  <style type="text/css">
+    textarea {
+      resize: none;
+    }
+  </style>
 </head>
 
 <body onload="bootstrap()">
   <h1>点字入力なんてのを作ってみようか</h1>
   <div id="content">
     <p>できれば入力した点字フォントを表示してみたいもんだ！</p>
-    <textarea name="brailleInputArea" id="inputarea" cols="32" rows="22"></textarea>
-    </div>
+    <textarea name="brailleInputArea" id="inputarea" rows="22" cols="32" autofocus></textarea>
+  </div>
   </div>
 </body>
 
