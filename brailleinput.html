@@ -15,11 +15,13 @@
 </head>
 
 <body onload="bootstrap()">
-  <h1>点字入力なんてのを作ってみようか</h1>
+  <h1>点字を書いてみよう！</h1>
   <div id="content">
-    <p>できれば入力した点字フォントを表示してみたいもんだ！</p>
+    <p>F,D,S,J,K,Lの6つのキーを使って点字パターンが入力できるよ。</p>
     <textarea name="brailleInputArea" id="inputarea" rows="22" cols="32" autofocus></textarea>
+    <input accesskey="x" onclick="changeInputMode()" type="checkbox" name="inputMode" checked>点字を入力
   </div>
+
   </div>
 </body>
 

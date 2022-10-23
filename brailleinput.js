@@ -1,6 +1,16 @@
+const BRAILLE=true;
+const ASCII=false;
 let keyCounter = -1;
 let brailleChar = 0;
 let beep;
+let inputMode=BRAILLE;
+
+function changeInputMode()
+{
+  inputMode = !inputMode;
+  return inputMode;
+}
+
 function processKeyboard(code) {
   keyCounter = -1;
 }
@@ -32,6 +42,7 @@ function isBrailleKey(e) {
   if (e.ctrlKey || e.isComposing || e.altKey) {
     return false;
   }
+  if (inputMode == false) return false;
   switch (e.code) {
     case "Backspace":
     case "Tab":
