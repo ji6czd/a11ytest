@@ -11,6 +11,7 @@ function changeInputMode()
   el = document.getElementById("inputarea");
   el.focus();
   return inputMode;
+
 }
 
 function processKeyboard(code) {
