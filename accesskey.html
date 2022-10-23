@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accesskey test</title>
+</head>
+
+<body>
+    <h1>アクセスキーとラベルのテスト</h1>
+    <p>スクリーンリーダーは、accesskey属性の情報をどのようにレンダリングするのだろうか。そして、それはUXにどのように影響するのだろうか。</p>
+    <form action="#">
+        <table>
+            <tr>
+                <td><label for="name">名前</label></td>
+                <td><input accesskey="n" type="text" name="name" id="name"></td>
+            </tr>
+            <tr>
+                <td><label for="email">E-mail</label></td>
+                <td><input accesskey="m" type="text" name="email" id="email"></td>
+            </tr>
+            <tr>
+                <td>性別(label要素あり)</td>
+                <td>
+                    <input accesskey="1" type="radio" name="gender" id="male" value="male">
+                    <label for="male">男性</label><br>
+                     <input accesskey="2" type="radio" name="gender" id="female" value="female">
+                    <label for="female">女性</label><br>
+                </td>
+            </tr>
+            <tr>
+                <td>性別(label要素なし)</td>
+                <td>
+                    <input accesskey="3" type="radio" name="_gender" id="_male" value="male">
+                    男性<br>
+                     <input accesskey="4" type="radio" name="_gender" id="_female" value="female">
+                    女性<br>
+                </td>
+            </tr>
+        </table>
+        <button type="submit">送信</button>
+    </form>
+    <p>JAWS, NVDAでは、フォームモードがオフのときに1行ずつ読むと、label要素を使って明示的にラベルが付けられていない場合アクセスキーがあるコントロールのラベルが読まれない。</p>
+</body>
+
+</html>
