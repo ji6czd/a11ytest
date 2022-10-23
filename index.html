@@ -1,18 +1,31 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accessibility test</title>
 </head>
-<body>
-<ul>
-    <li><a href="./click.html">onclick要素</a></li>
-    <li><a href="./add.html">コンテンツが増える</a></li>
-    <li><a href="./brailleinput.html">点字入力</a></li>
 
-    <li><a href="janken.html">Janken(unaccessible for sighted user)</a></li>
-</ul>    
+<body>
+    <h1>アクセシビリティ各種実験</h1>
+    <h2><a href="./click.html">onclick要素</a></h2>
+    <p>クリックできることがスクリーンリーダーに寄ってはわからない問題。視覚的にもこれではわからない。現代のHTMLはすべての要素が何らかのイベントを受け付ける。せめて、スクリーンリーダーはどんなイベントが受け付けられるかくらいは何らかの形でユーザに伝える必要はないんだろうか。
+    </p>
+    <h2><a href="./add.html">コンテンツが増える</a></h2>
+    <p>ユーザの操作によってページの内容が動的に変化する。どうしたらスクリーンリーダーはこの状況をユーザに伝えることができるだろうか。</p>
+    <h2><a href="./brailleinput.html">点字入力</a></h2>
+    <p>キーボードのF,D,S,J,K,Lキーを使って点字パターンが入力できるページ。スクリーンリーダーに寄っては点字パターンが読めるだろう。</p>
+    <p>Alt+Xを押すとASCIIと点字の入力を切り替えられる。UIとしては、入力中にAlt+Xを押したときにはフォーカスは入力フィールドの中から出てほしくない。ちょっと考慮しておかないとAlt+Xを押したときにフォーカスがチェックボックスの上に移ってしまう。
+    </p>
+    <p>アクセシビリティ上下記の問題がある。</p>
+    <ul>
+        <li>フォーカスが入力フィールドにある状態でAlt+Xを押したとき、チェックボックスの状態をアナウンスしない。</li>
+        <li>DOMが変化するんだから、スクリーンリーダーはチェックボックスの状態を知ることができるはずじゃないか？ユーザのキー操作に寄ってチェックボックスが変化したのだから、アナウンスしてくれてもよさそうなのに。</li>
+    </ul>
+    <h2><a href="janken.html">Janken(unaccessible for sighted user)</a></h2>
+    <p>画面が一切下記変わらないじゃんけんゲーム。パソコンをミュートすると遊べない。配慮されていないということはこういうことなんだっていう逆説的なページ。</p>
 </body>
+
 </html>

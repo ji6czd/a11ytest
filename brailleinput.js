@@ -8,6 +8,8 @@ let inputMode=BRAILLE;
 function changeInputMode()
 {
   inputMode = !inputMode;
+  el = document.getElementById("inputarea");
+  el.focus();
   return inputMode;
 }
 
