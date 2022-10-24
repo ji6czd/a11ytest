@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,24 +8,46 @@
     <title>Click test</title>
     <script type="text/javascript">
         function play(sString) {
-             const uttr = new window.SpeechSynthesisUtterance();
+            const uttr = new window.SpeechSynthesisUtterance();
             uttr.text = sString;
             window.speechSynthesis.speak(uttr);
-        } 
-        </script>
-        </head>
-<body>
-<h1>Click test</h1>    
-<h2>ボタンに見えない</h2>
-<p>
-    <span onclick="play('こんにちは')">こんにちは</span>
-    <span onclick="play('世界')">世界</span>
-</p>
+        }
+        function elclick(obj) {
+            let ids = obj.id;
+            play(ids);
+        }
+    </script>
+</head>
 
-<h2>個別のボタンに見える</h2>
-<p>
-    <span role="button" onclick="play('こんにちは')">こんにちは</span>
-    <span role="button" onclick="play('世界')">世界</span>
-</p>
+<body>
+    <div>
+        <h1>Click test</h1>
+        <h2>ボタンに見えない</h2>
+        <p>
+            <span onclick="play('こんにちは')">こんにちは</span>
+            <span onclick="play('世界')">世界</span>
+        </p>
+
+        <h2>個別のボタンに見える</h2>
+        <p>
+            <span role="button" onclick="play('こんにちは')">こんにちは</span>
+            <span role="button" onclick="play('世界')">世界</span>
+        </p>
+    </div>
+    <div>
+        <h1>どの要素がクリック可能？</h1>
+        <div id="div" onclick="elclick(this)">
+            どの要素にも入らない文章。
+            <h2 id="h" onclick="elclick(this)">見出しだよ</h2>
+            <p id="p" onclick="elclick(this)">ここは段落</p>
+            <p>
+                <span id="s1" onclick="elclick(this)">私の名前は</span>
+                <span id="s2" onclick="elclick(this)">カルメン</span>
+                <span>です</span>
+            </p>
+            <p>onclickは指定されていない段落。</p>
+        </div>
+    </div>
 </body>
+
 </html>
