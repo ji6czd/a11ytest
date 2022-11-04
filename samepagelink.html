@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Same page link test</title>
+</head>
+
+<body>
+  <ul>
+    <li><a href="#s1">セクション1へ</a></li>
+    <li><a href="#s2">セクション2へ</a></li>
+    <li><a href="#s3">セクション3へ</a></li>
+  </ul>
+  <h2 id="s1">セクション１</h2>
+  <p>アンカーにはなにもテキストがない状態。これでも見出しの上にスクリーンリーダーの読み上げカーソルがジャンプしなければならない。</p>
+
+  <div>
+    <span id="s3"></span>
+    <h2>セクション３</h2>
+    <p>見出しの直前に内容のないアンカーを置く。これでも見出しの上に読み上げカーソルがジャンプすることを期待するだろう</p>
+  </div>
+</body>
+
+</html>
