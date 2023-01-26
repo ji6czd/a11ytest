@@ -1,0 +1,78 @@
+@charset "UTF-8";
+
+.ptStream #spCiBlock {
+  margin-bottom: 25px;
+}
+
+.ptStream #contentsArea .aboutStream {
+  margin: -32px 0 32px;
+  font-size: 1.6rem;
+  text-align: right;
+}
+
+.ptStream #contentsArea .aboutStream a {
+  margin: 0 0 0 auto;
+}
+
+#mainContents h2:first-of-type {
+  margin-top: 64px;
+}
+
+.ptStream .streamPlayerBlock {
+  width: 832px;
+  margin: 0 auto 40px;
+}
+
+.ptStream .streamReferral {
+  margin: 0 0 0;
+}
+
+.ptStream .bottomBanner {
+  margin: 0 auto 30px;
+  text-align: center;
+}
+
+.ptStream .streamFreeAreaTop,
+.ptStream .streamFreeAreaBottom {
+  margin: 0 0 40px;
+}
+
+
+@media screen and (max-width: 960px) {
+
+  .ptStream .streamPlayerBlock {
+    width: 100%;
+  }
+}
+
+
+@media screen and (max-width: 640px) {
+
+  .ptStream #spCiBlock {
+    margin-top: 12px;
+    margin-bottom: 13px;
+  }
+
+  .ptStream #contentsArea .aboutStream {
+    margin: -16px 0 32px;
+    font-size: 1.4rem;
+  }
+
+  .ptStream #contentsArea .aboutStream a {
+    padding-right: 6px;
+  }
+
+  #mainContents h2:first-of-type {
+    margin-top: 48px;
+  }
+
+  .ptStream .streamPlayerBlock {
+    margin: 0 auto 32px;
+  }
+
+  .ptStream .streamFreeAreaTop,
+  .ptStream .streamFreeAreaBottom {
+    margin: 0 0 32px;
+  }
+
+}

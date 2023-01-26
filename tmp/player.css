@@ -1,0 +1,924 @@
+@charset "UTF-8";
+
+.playerContainer {
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  -webkit-user-select: none;
+  background-color: #000;
+  box-sizing: border-box;
+  outline: none;
+  position: relative;
+  user-select: none
+}
+
+.playerContainer *,
+.playerContainer :after,
+.playerContainer :before {
+  background-repeat: no-repeat
+}
+
+.playerContainer.readyState {
+  pointer-events: none
+}
+
+.playerContainer.fullscreenState {
+  height: 100% !important;
+  width: 100% !important
+}
+
+.playerContainer .contentContainer {
+  position: relative
+}
+
+.playerContainer .contentSize {
+  width: 100%
+}
+
+.playerContainer.ratio16x9 .contentSize {
+  padding-top: 56.25%
+}
+
+.playerContainer.ratio16x9.fullscreenState .contentSize {
+  padding-top: 0
+}
+
+.playerContainer .loadingContainer {
+  bottom: 0;
+  display: none;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%
+}
+
+.playerContainer .loadingIcon {
+  background-image: url(../images/svg/loading.svg);
+  background-position: 50%;
+  background-size: 80px;
+  bottom: 0;
+  height: 80px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 80px
+}
+
+.playerContainer.loadState .loadingIcon,
+.playerContainer.readyState .loadingIcon {
+  -webkit-animation: rotateAnime 1s linear infinite;
+  animation: rotateAnime 1s linear infinite
+}
+
+@keyframes rotateAnime {
+  to {
+    -webkit-transform: rotate(1turn);
+    transform: rotate(1turn)
+  }
+}
+
+.playerContainer.loadState .loadingContainer,
+.playerContainer.readyState .loadingContainer {
+  display: block
+}
+
+.playerContainer .playerHeader {
+  background: #f8f8f5;
+  border: 1px solid #979797;
+  border-bottom: none;
+  height: 30px;
+  margin: 0;
+  padding: 5px 10px;
+  text-align: right
+}
+
+.playerContainer .playerHeader img {
+  border: 0;
+  vertical-align: bottom
+}
+
+.playerContainer .videoContainer {
+  margin: auto
+}
+
+.playerContainer .videoContainer,
+.playerContainer .videoContainer object,
+.playerContainer .videoContainer video {
+  background-color: #000;
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%
+}
+
+.playerContainer .overlayButtonContainer {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%
+}
+
+.playerContainer .overlayButtonContainer .overlayRewindButton {
+  background-image: url(../images/svg/mv_rewind.svg);
+  transform: translateX(-137px)
+}
+
+.playerContainer .overlayButtonContainer .overlayForwardButton,
+.playerContainer .overlayButtonContainer .overlayRewindButton {
+  background-position: 50%;
+  background-size: contain;
+  bottom: 0;
+  box-sizing: content-box;
+  cursor: pointer;
+  height: 84px;
+  left: 0;
+  margin: auto;
+  outline: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 77px;
+  z-index: 100
+}
+
+.playerContainer .overlayButtonContainer .overlayForwardButton {
+  background-image: url(../images/svg/mv_forward.svg);
+  transform: translateX(137px)
+}
+
+.playerContainer .overlayButtonContainer .overlayPlayButton {
+  background-image: url(../images/svg/mv_play.svg);
+  background-position: 50%;
+  background-size: contain;
+  bottom: 0;
+  box-sizing: content-box;
+  cursor: pointer;
+  height: 79px;
+  left: 0;
+  margin: auto;
+  outline: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 79px;
+  z-index: 100
+}
+
+.playerContainer .overlayVolumeValue {
+  background-color: rgba(0, 0, 0, .6);
+  border-radius: 6px;
+  color: #fff;
+  display: none;
+  font-size: 18px;
+  font-weight: bold;
+  height: 44px;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 40px;
+  width: 110px
+}
+
+.playerContainer.overlayVolumeValueShowed .overlayVolumeValue {
+  display: flex;
+  flex-direction: column;
+  justify-content: center
+}
+
+.playerContainer.loadState .overlayForwardButton,
+.playerContainer.loadState .overlayPlayButton,
+.playerContainer.loadState .overlayRewindButton,
+.playerContainer.playState .overlayForwardButton,
+.playerContainer.playState .overlayPlayButton,
+.playerContainer.playState .overlayRewindButton,
+.playerContainer.readyState .overlayForwardButton,
+.playerContainer.readyState .overlayPlayButton,
+.playerContainer.readyState .overlayRewindButton {
+  display: none
+}
+
+.playerContainer.playState .overlayButtonContainer .overlayPlayButton {
+  background-image: url(../images/svg/mv_stop.svg)
+}
+
+.playerContainer.playState.overlayState .overlayButtonContainer .overlayForwardButton,
+.playerContainer.playState.overlayState .overlayButtonContainer .overlayPlayButton,
+.playerContainer.playState.overlayState .overlayButtonContainer .overlayRewindButton {
+  display: block
+}
+
+.playerContainer .playerControl {
+  background-color: #f8f8f5;
+  border-bottom: 1px solid #979797;
+  border-left: 1px solid #979797;
+  border-right: 1px solid #979797;
+  box-sizing: border-box;
+  height: 68px;
+  outline: 0;
+  position: relative;
+  width: 100%
+}
+
+.playerContainer .seekBar {
+  background-color: #979797;
+  cursor: pointer;
+  height: 18px;
+  outline: none;
+  position: relative;
+  width: 100%;
+  z-index: 10
+}
+
+.playerContainer .seekBarProgress {
+  background-color: #004697;
+  height: 100%;
+  width: 0
+}
+
+.playerContainer .seekBarThumb {
+  left: 9px;
+  position: absolute;
+  top: 0;
+  visibility: hidden
+}
+
+.playerContainer.pcDevice .seekBar:focus .seekBarThumb,
+.playerContainer.pcDevice .seekBar:hover .seekBarThumb {
+  visibility: visible
+}
+
+.playerContainer .seekBarThumbIcon {
+  background-image: url(../images/svg/seekbar_circle.svg);
+  background-position: 50%;
+  background-size: contain;
+  height: 18px;
+  left: -9px;
+  position: relative;
+  width: 18px
+}
+
+.playerContainer.pcDevice .seekBar:focus .seekBarThumbIcon,
+.playerContainer.pcDevice .seekBarThumb:hover .seekBarThumbIcon {
+  background-image: url(../images/svg/seekbar_circle_on.svg)
+}
+
+.playerContainer .timeElement {
+  align-items: center;
+  color: #000;
+  display: flex;
+  font-size: 15px;
+  height: 50px;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 18px;
+  width: 100%;
+  z-index: 10
+}
+
+.playerContainer .currentTime,
+.playerContainer .duration,
+.playerContainer .timeSeparator {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+}
+
+.playerContainer .timeSeparator {
+  margin-left: .5em;
+  margin-right: .5em
+}
+
+.playerContainer .playButton {
+  background-image: url(../images/svg/icon_play.svg);
+  background-position: 50%;
+  background-size: 17px 20px;
+  box-sizing: content-box;
+  cursor: pointer;
+  height: 20px;
+  left: 14px;
+  outline: none;
+  padding: 6px 7px;
+  position: absolute;
+  top: 27px;
+  width: 18px;
+  z-index: 100
+}
+
+.playerContainer.pcDevice .playButton:focus,
+.playerContainer.pcDevice .playButton:hover {
+  background-image: url(../images/svg/icon_play_on.svg)
+}
+
+.playerContainer.pcDevice .playButton:focus:after,
+.playerContainer.pcDevice .playButton:hover:after {
+  background-image: url(../images/svg/balloon_play.svg);
+  background-size: contain;
+  content: "";
+  height: 30px;
+  left: 0;
+  position: absolute;
+  top: -28px;
+  width: 44px
+}
+
+.playerContainer.playState .playButton {
+  background-image: url(../images/svg/icon_stop.svg)
+}
+
+.playerContainer.pcDevice.playState .playButton:focus,
+.playerContainer.pcDevice.playState .playButton:hover {
+  background-image: url(../images/svg/icon_stop_on.svg)
+}
+
+.playerContainer.pcDevice.playState .playButton:focus:after,
+.playerContainer.pcDevice.playState .playButton:hover:after {
+  background-image: url(../images/svg/balloon_stop.svg);
+  height: 30px;
+  width: 71px
+}
+
+.playerContainer .xspeedButton {
+  background-image: url(../images/svg/icon_speed_1.0.svg);
+  background-position: 0;
+  background-size: auto 12px;
+  box-sizing: content-box;
+  cursor: pointer;
+  height: 12px;
+  left: 58px;
+  outline: none;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  position: absolute;
+  top: 27px;
+  width: 56px;
+  z-index: 100
+}
+
+.playerContainer .xspeedButton[data-xspeed="0.75"] {
+  background-image: url(../images/svg/icon_speed_0.75.svg)
+}
+
+.playerContainer .xspeedButton[data-xspeed="1.25"] {
+  background-image: url(../images/svg/icon_speed_1.25.svg)
+}
+
+.playerContainer .xspeedButton[data-xspeed="1.5"] {
+  background-image: url(../images/svg/icon_speed_1.5.svg)
+}
+
+.playerContainer .xspeedButton[data-xspeed="1.75"] {
+  background-image: url(../images/svg/icon_speed_1.75.svg)
+}
+
+.playerContainer.pcDevice .xspeedButton:focus,
+.playerContainer.pcDevice .xspeedButton:hover {
+  background-image: url(../images/svg/icon_speed_1.0_on.svg)
+}
+
+.playerContainer.pcDevice .xspeedButton:focus[data-xspeed="0.75"],
+.playerContainer.pcDevice .xspeedButton:hover[data-xspeed="0.75"] {
+  background-image: url(../images/svg/icon_speed_0.75_on.svg)
+}
+
+.playerContainer.pcDevice .xspeedButton:focus[data-xspeed="1.25"],
+.playerContainer.pcDevice .xspeedButton:hover[data-xspeed="1.25"] {
+  background-image: url(../images/svg/icon_speed_1.25_on.svg)
+}
+
+.playerContainer.pcDevice .xspeedButton:focus[data-xspeed="1.5"],
+.playerContainer.pcDevice .xspeedButton:hover[data-xspeed="1.5"] {
+  background-image: url(../images/svg/icon_speed_1.5_on.svg)
+}
+
+.playerContainer.pcDevice .xspeedButton:focus[data-xspeed="1.75"],
+.playerContainer.pcDevice .xspeedButton:hover[data-xspeed="1.75"] {
+  background-image: url(../images/svg/icon_speed_1.75_on.svg)
+}
+
+.playerContainer.pcDevice .xspeedButton:focus:after,
+.playerContainer.pcDevice .xspeedButton:hover:after {
+  background-image: url(../images/svg/balloon_speed.svg);
+  background-size: contain;
+  content: "";
+  height: 30px;
+  left: -11px;
+  position: absolute;
+  top: -28px;
+  width: 70px
+}
+
+.playerContainer .rewindButton {
+  background-image: url(../images/svg/icon_rewind.svg);
+  left: 119px
+}
+
+.playerContainer .forwardButton,
+.playerContainer .rewindButton {
+  background-position: 50%;
+  background-size: 20px auto;
+  box-sizing: content-box;
+  cursor: pointer;
+  height: 22px;
+  outline: none;
+  padding: 5px 6px;
+  position: absolute;
+  top: 27px;
+  width: 20px;
+  z-index: 100
+}
+
+.playerContainer .forwardButton {
+  background-image: url(../images/svg/icon_forward.svg);
+  left: 149px
+}
+
+.playerContainer.pcDevice .rewindButton:focus,
+.playerContainer.pcDevice .rewindButton:hover {
+  background-image: url(../images/svg/icon_rewind_on.svg)
+}
+
+.playerContainer.pcDevice .rewindButton:focus:after,
+.playerContainer.pcDevice .rewindButton:hover:after {
+  background-image: url(../images/svg/balloon_rewind.svg);
+  background-size: contain;
+  content: "";
+  height: 30px;
+  left: -20px;
+  position: absolute;
+  top: -28px;
+  width: 72px
+}
+
+.playerContainer.pcDevice .forwardButton:focus,
+.playerContainer.pcDevice .forwardButton:hover {
+  background-image: url(../images/svg/icon_forward_on.svg)
+}
+
+.playerContainer.pcDevice .forwardButton:focus:after,
+.playerContainer.pcDevice .forwardButton:hover:after {
+  background-image: url(../images/svg/balloon_forward.svg);
+  background-size: contain;
+  content: "";
+  height: 30px;
+  left: -20px;
+  position: absolute;
+  top: -28px;
+  width: 72px
+}
+
+.playerContainer .volumeContainer {
+  bottom: 7px;
+  position: absolute;
+  right: 149px;
+  z-index: 100
+}
+
+.playerContainer.pcDevice .volumeContainer:hover:after {
+  bottom: 32px;
+  content: "";
+  display: block;
+  height: 100%;
+  height: 107px;
+  left: -19px;
+  position: absolute;
+  width: 64px;
+  z-index: 10
+}
+
+.playerContainer.pcDevice .volumeContainer:hover .volumeBarContainer {
+  opacity: 1;
+  pointer-events: auto
+}
+
+.playerContainer .volumeButton {
+  background-image: url(../images/svg/icon_mute.svg);
+  background-position: 4px 3px;
+  background-size: 26px 21px;
+  box-sizing: content-box;
+  cursor: pointer;
+  height: 24px;
+  outline: none;
+  padding: 4px 3px;
+  position: relative;
+  width: 26px;
+  z-index: 100
+}
+
+.playerContainer.pcDevice .volumeButton:focus,
+.playerContainer.pcDevice .volumeButton:hover {
+  background-image: url(../images/svg/icon_mute_on.svg)
+}
+
+.playerContainer.pcDevice .volumeButton:focus:after,
+.playerContainer.pcDevice .volumeButton:hover:after {
+  background-image: url(../images/svg/balloon_mute.svg);
+  background-size: contain;
+  content: "";
+  height: 30px;
+  left: -16px;
+  position: absolute;
+  top: -29px;
+  width: 64px
+}
+
+.playerContainer.mutedState .volumeButton {
+  background-image: url(../images/svg/icon_mute_release.svg);
+  background-size: 17px 23px
+}
+
+.playerContainer.pcDevice.mutedState .volumeButton:focus,
+.playerContainer.pcDevice.mutedState .volumeButton:hover {
+  background-image: url(../images/svg/icon_mute_release_on.svg)
+}
+
+.playerContainer.pcDevice.mutedState .volumeButton:focus:after,
+.playerContainer.pcDevice.mutedState .volumeButton:hover:after {
+  background-image: url(../images/svg/balloon_mute_release.svg);
+  background-size: contain;
+  height: 30px;
+  left: -30px;
+  width: 92px
+}
+
+.playerContainer .volumeBarContainer {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  bottom: 65px;
+  box-sizing: border-box;
+  height: 74px;
+  left: 2px;
+  opacity: 0;
+  outline: none;
+  padding-bottom: 3px;
+  padding-top: 3px;
+  pointer-events: none;
+  position: absolute;
+  width: 22px;
+  z-index: 100
+}
+
+.playerContainer.pcDevice .volumeBarContainer:focus:after,
+.playerContainer.pcDevice .volumeBarContainer:hover:after {
+  background-image: url(../images/svg/balloon_volume.svg);
+  background-size: contain;
+  content: "";
+  height: 30px;
+  left: -12px;
+  position: absolute;
+  top: -34px;
+  width: 44px
+}
+
+.playerContainer.pcDevice .volumeBarContainer:focus {
+  opacity: 1;
+  pointer-events: auto
+}
+
+.playerContainer .volumeBar {
+  box-sizing: border-box;
+  cursor: pointer;
+  height: 100%;
+  outline: none;
+  padding-left: 8px;
+  padding-right: 8px;
+  position: relative;
+  width: 100%
+}
+
+.playerContainer .volumeBarProgress {
+  background-color: #aeaeae;
+  border-radius: 2px;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%
+}
+
+.playerContainer .volumeBarProgressBar {
+  background-color: #004697;
+  bottom: 0;
+  content: "";
+  height: 50%;
+  left: 0;
+  position: absolute;
+  width: 100%
+}
+
+.playerContainer .volumeBarThumb {
+  outline: none;
+  position: absolute
+}
+
+.playerContainer .volumeBarThumbIcon {
+  background-image: url(../images/svg/vol_circle.svg);
+  background-position: 50%;
+  background-size: contain;
+  bottom: -6.5px;
+  height: 13px;
+  left: -4.5px;
+  position: relative;
+  width: 13px
+}
+
+.playerContainer.pcDevice .volumeBarThumb:focus .volumeBarThumbIcon,
+.playerContainer.pcDevice .volumeBarThumb:hover .volumeBarThumbIcon {
+  background-image: url(../images/svg/vol_circle_on.svg)
+}
+
+.playerContainer.mutedState .volumeBarProgressBar {
+  height: 0% !important
+}
+
+.playerContainer.mutedState .volumeBarThumb {
+  bottom: 0 !important
+}
+
+.playerContainer .captionButton {
+  background-image: url(../images/svg/btn_caption_off.svg);
+  background-position: 50%;
+  background-size: contain;
+  box-sizing: content-box;
+  cursor: pointer;
+  height: 22px;
+  outline: none;
+  position: absolute;
+  right: 62px;
+  top: 32px;
+  width: 72px;
+  z-index: 100
+}
+
+.playerContainer.hideCaption .captionButton {
+  background-image: url(../images/svg/btn_caption_on.svg)
+}
+
+.playerContainer.pcDevice .captionButton:focus,
+.playerContainer.pcDevice .captionButton:hover {
+  background-image: url(../images/svg/btn_caption_off_02.svg)
+}
+
+.playerContainer.pcDevice .captionButton:focus:after,
+.playerContainer.pcDevice .captionButton:hover:after {
+  background-image: url(../images/svg/balloon_caption.svg);
+  background-size: contain;
+  content: "";
+  height: 30px;
+  left: 1px;
+  position: absolute;
+  top: -33px;
+  width: 70px
+}
+
+.playerContainer.pcDevice.hideCaption .captionButton:focus,
+.playerContainer.pcDevice.hideCaption .captionButton:hover {
+  background-image: url(../images/svg/btn_caption_on_02.svg)
+}
+
+.playerContainer.captionNone .captionButton {
+  background-image: url(../images/svg/btn_caption_no.svg);
+  cursor: default;
+  pointer-events: none
+}
+
+.playerContainer .fullscreenButton {
+  background-image: url(../images/svg/icon_fullscreen.svg);
+  background-position: 50%;
+  background-size: 22px 22px;
+  box-sizing: content-box;
+  cursor: pointer;
+  height: 22px;
+  outline: none;
+  padding: 5px;
+  position: absolute;
+  right: 15px;
+  top: 27px;
+  width: 22px;
+  z-index: 100
+}
+
+.playerContainer.pcDevice .fullscreenButton:focus,
+.playerContainer.pcDevice .fullscreenButton:hover {
+  background-image: url(../images/svg/icon_fullscreen_on.svg)
+}
+
+.playerContainer.pcDevice .fullscreenButton:focus:after,
+.playerContainer.pcDevice .fullscreenButton:hover:after {
+  background-image: url(../images/svg/balloon_fullscreen.svg);
+  background-size: contain;
+  content: "";
+  height: 30px;
+  left: -24px;
+  position: absolute;
+  top: -28px;
+  width: 59px
+}
+
+.playerContainer.fullscreenState .fullscreenButton {
+  background-image: url(../images/svg/icon_fullscreen_release.svg)
+}
+
+.playerContainer.pcDevice.fullscreenState .fullscreenButton:focus,
+.playerContainer.pcDevice.fullscreenState .fullscreenButton:hover {
+  background-image: url(../images/svg/icon_fullscreen_release_on.svg)
+}
+
+.playerContainer.pcDevice.fullscreenState .fullscreenButton:focus:after,
+.playerContainer.pcDevice.fullscreenState .fullscreenButton:hover:after {
+  background-image: url(../images/svg/balloon_fullscreen_release.svg);
+  background-size: contain;
+  height: 30px;
+  left: -48px;
+  width: 83px
+}
+
+.playerContainer .videoCaption {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%
+}
+
+.playerContainer .videoCaptionText {
+  bottom: 26%;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "\6E38\30B4\30B7\30C3\30AF   Medium", YuGothic, YuGothicM, "Hiragino Kaku Gothic ProN", メイリオ, Meiryo, sans-serif;
+  font-size: 18px;
+  line-height: 1.4;
+  position: absolute;
+  text-align: center;
+  text-shadow: #000 1px 1px 0, #000 -1px -1px 0, #000 -1px 1px 0, #000 1px -1px 0, #000 0 1px 0, #000 -1px 0, #000 -1px 0 0, #000 1px 0 0;
+  width: 100%
+}
+
+.playerContainer .errorContainer {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%
+}
+
+.playerContainer .errorContent {
+  display: table;
+  height: 100%;
+  width: 100%
+}
+
+.playerContainer .errorBody {
+  color: #fff;
+  display: table-cell;
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle
+}
+
+.playerContainer .errorMessage {
+  display: inline-block;
+  font-size: 13px;
+  pointer-events: all;
+  text-align: left
+}
+
+.playerContainer.errorState .playButton,
+.playerContainer.errorState .seekBar {
+  pointer-events: none
+}
+
+.playerContainer.errorState .overlayButtonContainer,
+.playerContainer.errorState .videoContainer object,
+.playerContainer.errorState .videoContainer video {
+  display: none
+}
+
+.playerContainer {
+  min-width: 290px
+}
+
+.playerContainer.spDevice .overlayButtonContainer .overlayRewindButton {
+  height: 50.5px;
+  transform: translateX(-86.5px);
+  width: 46.5px
+}
+
+.playerContainer.spDevice .overlayButtonContainer .overlayForwardButton {
+  height: 50.5px;
+  transform: translateX(86.5px);
+  width: 46.5px
+}
+
+.playerContainer.spDevice .overlayButtonContainer .overlayPlayButton {
+  height: 46.5px;
+  width: 46.5px
+}
+
+.playerContainer.spDevice .playerControl {
+  height: 49px
+}
+
+.playerContainer.spDevice .seekBar {
+  height: 9px
+}
+
+.playerContainer.spDevice .timeElement {
+  box-sizing: border-box;
+  font-size: 10.5px;
+  height: 40px;
+  left: 0;
+  padding-left: 112.5px;
+  padding-right: 138px;
+  top: 9px
+}
+
+@media screen and (max-width:344px) {
+  .playerContainer.spDevice .timeElement {
+    padding-left: 119.5px;
+    padding-right: 131px
+  }
+}
+
+.playerContainer.spDevice .playButton {
+  background-size: 14.5px 17px;
+  height: 17px;
+  left: 10.25px;
+  padding: 3.5px 4.75px;
+  top: 17px;
+  width: 14.5px
+}
+
+@media screen and (max-width:344px) {
+  .playerContainer.spDevice .playButton {
+    left: 5px
+  }
+}
+
+.playerContainer.spDevice .xspeedButton {
+  background-size: auto 11px;
+  height: 11px;
+  left: 45px;
+  padding-bottom: 6.5px;
+  padding-top: 6.5px;
+  top: 17.5px;
+  width: 51px
+}
+
+@media screen and (max-width:344px) {
+  .playerContainer.spDevice .xspeedButton {
+    left: 33px
+  }
+}
+
+.playerContainer.spDevice .captionButton {
+  height: 19px;
+  right: 49px;
+  top: 19.5px;
+  width: 62px
+}
+
+@media screen and (max-width:344px) {
+  .playerContainer.spDevice .captionButton {
+    right: 33px
+  }
+}
+
+.playerContainer.spDevice .fullscreenButton {
+  background-size: 19px 19px;
+  height: 19px;
+  padding: 2.5px;
+  right: 12.5px;
+  top: 17px;
+  width: 19px
+}
+
+@media screen and (max-width:344px) {
+  .playerContainer.spDevice .fullscreenButton {
+    right: 5px
+  }
+}
+
+.playerContainer.spDevice .errorMessage {
+  font-size: 15px
+}
+
+.playerContainer.spDevice .forwardButton,
+.playerContainer.spDevice .rewindButton,
+.playerContainer.spDevice .volumeContainer {
+  display: none
+}
