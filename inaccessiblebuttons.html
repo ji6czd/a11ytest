@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inaccessible buttons</title>
+  
+  <script type="text/javascript">
+function Click(obj) {
+  // ブラウザにWeb Speech API Speech Synthesis機能があるか判定
+  if ('speechSynthesis' in window) {
+    const uttr = new SpeechSynthesisUtterance();
+    uttr.text = obj.id;
+    window.speechSynthesis.speak(uttr);
+  }
+}
+  </script>
+<style type="text/css">
+#btn1 {
+  width: 37px;
+  height: 9px;
+  background-image: url(./images/ecalbt010-png/ecalbt010_001.png);
+  box-sizing: content-box;
+  cursor: pointer;
+}
+#btn2 {
+  width: 37px;
+  height: 9px;
+  background-image: url(./images/ecalbt010-png/ecalbt010_002.png);
+  box-sizing: content-box;
+  cursor: pointer;
+}
+#btn3 {
+  width: 37px;
+  height: 9px;
+  box-sizing: content-box;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+<h1>スクリーンリーダーで認識できないボタンたち</h1>
+<div>
+<div id="btn1" onclick="Click(this)" class="cbtn1" tabindex="0"></div>
+<div id="btn2" onclick="Click(this)" class="cbtn2" tabindex="0"></div>
+<div id="btn3" onclick="Click(this)" class="cbtn3" tabindex="0"></div>
+</div>
+</body>
+</html>
