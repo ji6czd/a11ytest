@@ -1,20 +1,19 @@
-const BRAILLE=true;
-const ASCII=false;
-let keyCounter = -1;
-let brailleChar = 0;
+const BRAILLE = true;
+const ASCII = false;
+let keyCounter = -1; // すべての点字入力が処理されると-1になる。
+let brailleChar = 0; // スペースは0
 let beep;
-let inputMode=BRAILLE;
+let inputMode = BRAILLE;
 
-function changeInputMode()
-{
+function changeInputMode() {
   inputMode = !inputMode;
   el = document.getElementById("inputarea");
   el.focus();
   return inputMode;
-
 }
 
 function processKeyboard(code) {
+  // なにかしら処理すべきことがあるのならばここに書く
   keyCounter = -1;
 }
 
@@ -24,16 +23,14 @@ function brailleIn(e) {
   }
   if (keyCounter == 1) {
     let el = document.getElementById("inputarea");
-    brailleChar += 0x2800;
+    brailleChar += 0x2800; // 点字フォントはU+2800から始まる
     let pos = el.selectionStart;
     let sentence = el.value;
     let len = sentence.length;
     let before = sentence.substr(0, pos);
     let after = sentence.substr(pos, len);
-    // sentence = 'hoge';
     sentence = before + String.fromCharCode(brailleChar) + after;
     el.value = sentence;
-    console.log(el.innerHTML);
     beep.play();
     el.setSelectionRange(pos + 1, pos + 1);
     brailleChar = 0;
@@ -110,6 +107,6 @@ function bootstrap() {
   input.addEventListener('keydown', keyIn);
   input.addEventListener('keyup', brailleIn);
   beep = new Audio();
-  beep.src = "./beep.wav";
+  beep.src = "audio/beep.wav";
   beep.play();
 }    
