@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+
+<head>
+  <title>image and alt test</title>
+</head>
+
+<body>
+  <h1>Image list with blank alt attribute</h1>
+  <p>スクリーンリーダーは無視する。もしこの挙動を理解せずに作られたページだったら、オブジェクトの存在を認識できない。</p>
+  <ul>
+    <li><img src="./photos/IMG_0001.JPG" alt="" />
+    <li><img src="./photos/IMG_0002.JPG" alt="" />
+    <li><img src="./photos/IMG_0003.JPG" alt="" />
+  </ul>
+  <p>無視しない選択肢がスクリーンリーダーには必要ではないか？</p>
+  <h1>Image list without alt attribute</h1>
+  <p>ブラウザとスクリーンリーダーとの組み合わせによっては、画像の説明を自動生成することができる。alt属性についてわかっていないのならば、これがもっともアクセシビリティ的に良い。</p>
+  <ul>
+    <li><img src="./photos/IMG_0001.JPG" />
+    <li><img src="./photos/IMG_0002.JPG" />
+    <li><img src="./photos/IMG_0003.JPG" />
+  </ul>
+  <h1>Image list with numeric alt attribute</h1>
+  <p>人間が読んで意味のない文字列。それでもスクリーンリーダーはこれを妥当なテキストとして読み上げる。</p>
+  <ul>
+    <li><img src="./photos/IMG_0001.JPG" alt="0001234759203476290345829364587926498723465" />
+    <li><img src="./photos/IMG_0002.JPG" alt="00027689345760923485091-34809-34576983475" />
+    <li><img src="./photos/IMG_0003.JPG" alt="00031357893476298034672983045729083467" />
+  </ul>
+  <p>ブラウザには、altテキストを自動生成したものに上書きするオプションがあっても良いのではないか？</p>
+</body>
