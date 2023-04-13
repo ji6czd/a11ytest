@@ -11,50 +11,40 @@
 
 <body>
     <h1>
-        入れ子になったリスト
+        Nested list
     </h1>
     <h2>
-        入れ子になったUL要素
+        Nested ul elements
     </h2>
     <ul>
+        <li>item 1</li>
         <li>
-            項目1
             <ul>
-                <li>
-                    項目1の1
-                </li>
-                <li>
-                    項目1の2
-                </li>
+                <li>item 1-1</li>
+                <li>item 1-2</li>
             </ul>
         </li>
+        <li>item 2</li>
         <li>
-            項目2
             <ul>
-                <li>
-                    項目2の1
-                </li>
-                <li>
-                    項目2の2
-                </li>
+                <li>item 2-1</li>
+                <li>item 2-2</li>
             </ul>
         </li>
     </ul>
-    <h2>
-        入れ子になったOL要素
-    </h2>
-    <ol>
-        <li>
-            項目1
-            <ol>
-                <li>
-                    項目1の1
-                </li>
-                <li>
-                    項目1の2
-                </li>
-            </ol>
-        </li>
-        <li>
-            項目2
-            <ol>
+    <h2>UL要素に直接UL要素がネストされる</h2>
+    <ul>
+        <li>item 1</li>
+        <ul>
+            <li>item 1-1</li>
+            <li>item 1-2</li>
+        </ul>
+        <li>item 2</li>
+        <ul>
+            <li>item 2-1</li>
+            <li>item 2-2</li>
+        </ul>
+    </ul>
+</body>
+
+</html>
