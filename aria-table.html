@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aria and table reading</title>
+</head>
+
+<body>
+    <p>以下のテーブルは、JAWSではアクセスできない。Narrator, NVDAではコンテンツを読める。</p>
+    <div role="button" aria-label="見えないテーブル">
+        <table>
+            <tr><th>OS</th><th>Release date</th></tr>
+            <tr><td>MS-DOS</td><td>1982</td></tr>
+            <tr><td>Windows 1.0</td><td>1989</td></tr>
+            <tr><td>Windows 3.1</td><td>1991</td></tr>
+        </table>
+    </div>
+</body>
+
+</html>
