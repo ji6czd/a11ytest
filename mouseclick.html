@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse click simulation</title>
+    <script type="text/javascript">
+        function playStr(sString) {
+            const uttr = new window.SpeechSynthesisUtterance();
+            uttr.text = sString;
+            window.speechSynthesis.speak(uttr);
+        }
+    </script>
+
+</head>
+
+<body>
+    <h1>マウスクリックのシミュレーション</h1>
+    <p>スクリーンリーダーは、いくつかの方法でマウスクリックをブラウザに対して行うことができるように設計されていることが多い。どんな操作をしたときになにが起きるのかを可視化するのが目的である。</p>
+    <div>
+        <span onclick="playStr('クリックされました')" onkeypress="playStr('キーボードが押されました')"
+            role="button">ボタンです、押して見てね</span>
+    </div>
+    <div>
+        <form action="#">
+            <label>フォームモードに入ってね
+                <input type="text"></label>
+            <input type="button" onclick="playStr('クリックされました')" onkeypress="playStr('キーボードが押されました')"
+                value="ボタンです、TABキーで行けるはず">
+        </form>
+    </div>
+    <p>なにが置きたかを喋るはずだよ。</p>
+</body>
+
+</html>
