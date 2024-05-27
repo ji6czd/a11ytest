@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where is click</title>
+    <script>
+        function bootstrap() {
+            beep = new Audio();
+            beep.src = "audio/beep.wav";
+            const el = document.getElementById("content");
+            el.addEventListener("click", ClickCheck);
+            beep.play();
+        }
+        function play(sString) {
+            const uttr = new window.SpeechSynthesisUtterance();
+            uttr.text = sString;
+            window.speechSynthesis.speak(uttr);
+        }
+        function ClickCheck(event) {
+            bounds = event.target.getBoundingClientRect();
+            const r = bounds.left.toString() + " : " + bounds.top.toString();
+            const c = event.clientX.toString() + ":" + event.clientY.toString();
+            beep.play();
+            if (event.clientX > bounds.left && event.clientX < bounds.right) {
+                play("OK")
+            } else {
+                play("Outside the element" + event.clientX.toString() + " : " + bounds.left.toString() + " : " + bounds.right.toString());
+            }
+        }
+    </script>
+</head>
+
+<body onload="bootstrap()" id="content">
+    <h1>どこがくりっくされるの？</h1>
+    <p>スクリーンリーダーの多くは、エンターキーが押されると、注目している部分（仮想バッファとかブラウズモードとか）に対して左マウスクリックイベントを送るようになっている。このとき、画面上のどこがクリックされたかということが問題になることがあるかもしれない。
+    </p>
+    <p>クリックした場所が要素の表示領域内ならば「OK」、表示領域外ならば「Outside the element」と発声する。</p>
+    <h2>DIV, SPAN</h2>
+    JAWS, Narratorでは、span要素をクリックすると、0,0がクリックされたことになるようだ。
+    <div>
+        <p><span>みなさんこんにちは。</span><span>JAWSはどこをくりっくするでしょうか。</span></p>
+        <p>Ｈｅｌｌｏ　ｗｏｒｌｄ</p>
+    </div>
+    <h2>フォーム関連</h2>
+    <p>LABEL要素内はエンターキーによるクリックは行われない。代わりに該当するコントロールにフォーカスを移すことがある。</p>
+    <div id="content2">
+        <form>
+            <div><label>姓<input type="text" name="family" maxlength="20"></label><br>
+                <label>名<input type="text" name="first" maxlength="20"></label><br>
+                <input type="submit" value="送信">
+            </div>
+        </form>
+    </div>
+    <h2>とても長いコンテンツ</h2>
+    <p>とても長いコンテンツの中で、どこがクリックされたかを知ることは難しいかもしれない。下の場合はどこをえんたーしても同じ場所をクリックしたことになる</p>
+
+    <div>
+        <p>ながいながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながいながいながいながい
+            ながいながいながいながいながいながいながい文章。
+        </p>
+    </div>
+</body>
+
+</html>
